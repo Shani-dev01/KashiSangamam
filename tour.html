@@ -78,12 +78,21 @@
 <button class="p-2 rounded-lg hover:bg-border-color/30 text-text-main dark:text-[#e7ddcf]">
 <span class="material-symbols-outlined text-[20px]">account_circle</span>
 </button>
-<button class="md:hidden p-2 rounded-lg hover:bg-border-color/30 text-text-main dark:text-[#e7ddcf]">
+<button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-border-color/30 text-text-main dark:text-[#e7ddcf] cursor-pointer">
 <span class="material-symbols-outlined text-[20px]">menu</span>
 </button>
 </div>
 </div>
 </div>
+<nav id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-background-light dark:bg-background-dark border-b border-border-color dark:border-[#3a2f24] shadow-lg">
+<div class="flex flex-col px-4 py-4 gap-2">
+<a class="text-text-main dark:text-[#e7ddcf] font-medium hover:text-primary hover:bg-border-color/30 px-4 py-3 rounded transition-colors text-sm" href="index.html">Home</a>
+<a class="text-text-main dark:text-[#e7ddcf] font-medium hover:text-primary hover:bg-border-color/30 px-4 py-3 rounded transition-colors text-sm" href="puja.html">Pujas</a>
+<a class="text-primary font-bold hover:bg-border-color/30 px-4 py-3 rounded transition-colors text-sm" href="tour.html">Tours</a>
+<a class="text-text-main dark:text-[#e7ddcf] font-medium hover:text-primary hover:bg-border-color/30 px-4 py-3 rounded transition-colors text-sm" href="gallery.html">Gallery</a>
+<a class="text-text-main dark:text-[#e7ddcf] font-medium hover:text-primary hover:bg-border-color/30 px-4 py-3 rounded transition-colors text-sm" href="contact.html">Contact</a>
+</div>
+</nav>
 </header>
 <main class="flex-grow w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
 <div class="flex items-center gap-2 text-xs text-text-muted mb-6">
@@ -553,4 +562,27 @@
 </div>
 </div>
 </footer>
+<script>
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    
+    if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+</script>
 </body></html>

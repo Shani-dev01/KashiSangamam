@@ -72,12 +72,26 @@
 <button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white text-sm font-bold transition-all shadow-md hover:shadow-lg">
 <span class="truncate">Book Now</span>
 </button>
-<button class="md:hidden text-text-main">
+<button id="mobile-menu-btn" class="md:hidden text-text-main cursor-pointer">
 <span class="material-symbols-outlined">menu</span>
 </button>
 </div>
 </div>
 </div>
+<nav id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-[#FFFCF7] border-b border-[#F0E6D2] shadow-lg">
+<div class="flex flex-col px-4 py-4 gap-2">
+<a class="text-text-main font-medium hover:text-primary hover:bg-primary-light px-4 py-3 rounded transition-colors text-sm uppercase tracking-wide" href="index.html">Home</a>
+<a class="text-text-main font-medium hover:text-primary hover:bg-primary-light px-4 py-3 rounded transition-colors text-sm uppercase tracking-wide" href="puja.html">Pujas</a>
+<a class="text-text-main font-medium hover:text-primary hover:bg-primary-light px-4 py-3 rounded transition-colors text-sm uppercase tracking-wide" href="tour.html">Tours</a>
+<a class="text-primary font-bold hover:bg-primary-light px-4 py-3 rounded transition-colors text-sm uppercase tracking-wide" href="gallery.html">Gallery</a>
+<a class="text-text-main font-medium hover:text-primary hover:bg-primary-light px-4 py-3 rounded transition-colors text-sm uppercase tracking-wide" href="contact.html">Contact</a>
+<hr class="my-2 border-[#F0E6D2]"/>
+<a class="text-green-600 hover:text-green-700 px-4 py-3 rounded transition-colors flex items-center gap-2 text-sm font-semibold" href="https://wa.me/">
+<span class="material-symbols-outlined text-xl">chat</span>
+<span>WhatsApp</span>
+</a>
+</div>
+</nav>
 </header>
 <section class="relative w-full h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden bg-[#221a10]">
 <div class="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-70" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKojSG6uTmez93TbpIFt-a1Q_TAxiaLeePwbjI87RWnAPnw9HIG3YOpl5pek895AOTyJx7SeDe7nVWvdVgXrsmgoUhonJ2IU8Yc6PLT_GJ9bX22Y3SWJQghkE97s052EL-LZBtFs_Y48p_PHh8RraWIF1hOqNDnFcqHlYWp_RZDDjoKf5EC03SZxOxjShyvICWexjROxJ6jHA7hXIaXKf_jRTQkvze0PqMlQpODrXiQ9xhDUJ0qIkKaE1u83CnID1TfNQy6eNImg");'></div>
@@ -318,5 +332,28 @@
 <a class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group" href="https://wa.me/">
 <span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform">chat</span>
 </a>
+<script>
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    
+    if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+</script>
 </div>
 </body></html>
